@@ -6,7 +6,7 @@ public class DecompondoPrimos {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double num = scanner.nextDouble();
-
+        //Testando 1 2 3
         for (int cont = 1; cont <= num ; cont++){
             double div = num / cont;
             // %d substitui o primeiro parametro apos a virgula (d = inteiro / f = double / c = caractere / s = string)
