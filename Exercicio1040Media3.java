@@ -9,7 +9,7 @@ public class Exercicio1040Media3 {
         double n2 = scanner.nextDouble();
         double n3 = scanner.nextDouble();
         double n4 = scanner.nextDouble();
-        double media = (n1*2 + n2*3 + n3*4 + n4) / 10;
+        double media = Math.floor(n1*2 + n2*3 + n3*4 + n4) / 10;
         System.out.printf("Media: %.1f\n" , media);
         if (media >= 7){
             System.out.println("Aluno aprovado.");
