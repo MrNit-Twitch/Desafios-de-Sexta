@@ -1,5 +1,9 @@
 package desafiosDeSexta;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Exercicio1045TiposDeTriangulo {
@@ -9,23 +13,35 @@ public class Exercicio1045TiposDeTriangulo {
         double b = scanner.nextDouble();
         double c = scanner.nextDouble();
 
-        if(a <= b + c){
-            System.out.println("NAO FORMA TRIANGULO");
-        } else if (a*2 == b*2 + c*2){
-            System.out.println("TRIANGULO RETANGULO");
-        } else if (a*2 > b*2 + c*2) {
-            System.out.println("TRIANGULO OBTUSANGULO");
-        } else if (a*2 < b*2 + c*2) {
-            System.out.println("TRIANGULO ACUTANGULO");
-        } else {
-            System.out.println("NAO FORMA TRIANGULO");
-        }
+        List<Double> ordem = new ArrayList<>();
+        ordem.add(a);
+        ordem.add(b);
+        ordem.add(c);
 
-        if (a == b && b == c & c == a){
-            System.out.println("TRIANGULO EQUILATERO");
+        Collections.sort(ordem, Collections.reverseOrder());
+
+        a = ordem.get(0);
+        b = ordem.get(1);
+        c = ordem.get(2);
+
+
+        if (a >= b + c) {
+            System.out.println("NAO FORMA TRIANGULO");
         } else {
-            System.out.println("TRIANGULO ISOSCELES");
+            if (a * a == b * b + c * c) {
+                System.out.println("TRIANGULO RETANGULO");
+            }
+            if (a * a > b * b + c * c) {
+                System.out.println("TRIANGULO OBTUSANGULO");
+            }
+            if (a * a < b * b + c * c) {
+                System.out.println("TRIANGULO ACUTANGULO");
+            }
+            if (a == b && b == c) {
+                System.out.println("TRIANGULO EQUILATERO");
+            } else if (a == b || b == c || a == c) {
+                System.out.println("TRIANGULO ISOSCELES");
+            }
         }
     }
-
 }
