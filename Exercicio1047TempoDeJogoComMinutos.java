@@ -12,26 +12,38 @@ public class Exercicio1047TempoDeJogoComMinutos {
         int hour = 0;
         int minute = 0;
 
-        if (startHour == finishHour){
-            hour = 24;
-        }
+        //Hours
 
         if (startHour < finishHour){
             hour = finishHour - startHour;
-        } else {
+        }
+
+        if (startHour > finishHour) {
             hour = 24 - startHour + finishHour;
         }
+
+        //Minutes
 
         if (startMinute == finishMinute){
             minute = 0;
         }
 
         if (startMinute < finishMinute){
-            minute = finishMinute - finishHour;
-        } else {
-            minute = 60 - startMinute + finishMinute;
+            minute = finishMinute - startMinute;
         }
 
-        System.out.println("O JOGO DUROU " + hour + " HORA(S) e " + minute + " MINUTO(S)");
+        if (startMinute > finishMinute && startHour != finishHour){
+            minute = 60 - startMinute + finishMinute;
+            hour--;
+        } else if (startMinute > finishMinute && startHour == finishHour){
+            minute = 60 - startMinute + finishMinute;
+            hour = 23;
+        }
+
+        if (startHour == finishHour && startMinute == finishMinute){
+            hour = 24;
+        }
+
+        System.out.println("O JOGO DUROU " + hour + " HORA(S) E " + minute + " MINUTO(S)");
     }
 }
