@@ -1,10 +1,8 @@
 package desafiosDeSexta;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-public class Exercicios1060NumerosPositivos {
+public class Exercicio1060NumerosPositivos {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double[] num = new double[6];
