@@ -1,6 +1,5 @@
 package desafiosDeSexta;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Exercicio1061TempoDeUmEvento {
@@ -13,40 +12,44 @@ public class Exercicio1061TempoDeUmEvento {
         String finDay = scanner.nextLine();
         String[] finTime = scanner.nextLine().split(" : ");
 
-        int iniDayInt = Integer.parseInt(iniDay) * 86400;
-        int finDayInt = Integer.parseInt(finDay) * 86400;
+        int iniDayInSec = Integer.parseInt(iniDay) * 86400;
+        int finDayInSec = Integer.parseInt(finDay) * 86400;
         int iniHourInSec = Integer.parseInt(iniTime[0]) * 3600;
-        int finHourInSec = Integer.parseInt(iniTime[0]) * 3600;
+        int finHourInSec = Integer.parseInt(finTime[0]) * 3600;
         int iniMinInSec = Integer.parseInt(iniTime[1]) * 60;
-        int finMinInSec = Integer.parseInt(iniTime[1]) * 60;
+        int finMinInSec = Integer.parseInt(finTime[1]) * 60;
         int iniSec = Integer.parseInt(iniTime[2]);
-        int finSec = Integer.parseInt(iniTime[2]);
+        int finSec = Integer.parseInt(finTime[2]);
+        int totDay = 0;
+        int totHour = 0;
+        int totMin = 0;
         int totSec = 0;
 
-        int totIniInSec = iniDayInt + iniHourInSec + iniMinInSec + iniSec;
-        int totFinInSec = finDayInt + finHourInSec + finMinInSec + finSec;
-
-        if (totFinInSec > totIniInSec) {
-            totSec = totFinInSec - totIniInSec;
+        totDay = (finDayInSec - iniDayInSec) / 86400;
+        if (finHourInSec > iniHourInSec) {
+            totHour = (finHourInSec - iniHourInSec) / 3600;
         } else {
-            //totSec = paramos aqui.
-            /*EXEMPLO //Hours
-
-            if (startHour < finishHour){
-                hour = finishHour - startHour;
-            }
-
-            if (startHour > finishHour) {
-                hour = 24 - startHour + finishHour;
-            }*/
+            totHour = (86400 - (iniHourInSec - finHourInSec)) / 3600;
+            totDay = totDay - 1;
         }
 
-        int totDay = 0; //ainda não calculei
+        if (finMinInSec > iniMinInSec) {
+            totMin = (finMinInSec - iniMinInSec) / 60;
+        } else {
+            totMin = (3600 - (finMinInSec - finMinInSec)) / 60;
+            totHour = totHour - 1;
+        }
+
+        if (finSec >= iniSec) {
+            totSec = (finSec - iniSec);
+        } else {
+            totSec = (60 - (finSec - iniSec));
+            totMin = totMin - 1;
+        }
 
         System.out.println(totDay + " dia (s)");
-        System.out.println(Arrays.toString(iniTime) + " hora (s)");
-        System.out.println(finDay + " minuto (s)");
-        System.out.println(Arrays.toString(finTime) + " segundo (s)");
-
+        System.out.println(totHour + " hora (s)");
+        System.out.println(totMin + " minuto (s)");
+        System.out.println(totSec + " segundo (s)");
     }
 }
