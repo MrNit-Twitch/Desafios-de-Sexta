@@ -26,23 +26,38 @@ public class Exercicio1061TempoDeUmEvento {
         totDay = (finDayInSec - iniDayInSec) / 86400;
         if (finHourInSec > iniHourInSec) {
             totHour = (finHourInSec - iniHourInSec) / 3600;
+            if (totHour == 24) {
+                totHour = 00;
+                totDay = totDay + 1;
+            }
         } else {
             totHour = (86400 - (iniHourInSec - finHourInSec)) / 3600;
             totDay = totDay - 1;
+            if (totHour == 24) {
+                totHour = 00;
+                totDay = totDay + 1;
+            }
         }
 
         if (finMinInSec > iniMinInSec) {
             totMin = (finMinInSec - iniMinInSec) / 60;
+            if (totMin == 60) {
+                totMin = 00;
+                totHour = totHour + 1;
+            }
         } else {
             totMin = (3600 - (finMinInSec - iniMinInSec)) / 60;
             totHour = totHour - 1;
+            if (totMin == 60) {
+                totMin = 00;
+                totHour = totHour + 1;
+            }
         }
 
         if (finSec >= iniSec) {
             totSec = (finSec - iniSec);
         } else {
-            totSec = (60 - (finSec - iniSec));
-            totMin = totMin - 1;
+            totSec = (60 + (finSec - iniSec));
         }
 
         System.out.println(totDay + " dia(s)");
